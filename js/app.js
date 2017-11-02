@@ -35,7 +35,7 @@ $(document).ready(function() {
 		// Pilih 3 makanan (pagi, siang, sore)
 		let slotMakanan = 3;
 
-		while (makananTerpilih.length <= slotMakanan) {
+		while (makananTerpilih.length < slotMakanan) {
 			let makanan = ambilAcakDariArray(databaseMakanan);
 			console.log(makanan);
 
@@ -61,7 +61,15 @@ $(document).ready(function() {
 		////
 		// Logika output
 		////
-		console.log(makananTerpilih)
+
+		// Compile template html
+		let sourceTemplate = $('#template-makanan').html();
+		let template = Handlebars.compile(sourceTemplate);
+		let html = makananTerpilih.map(function(makanan) {
+			return template(makanan);
+		});
+		// Pasang ke html
+		$('#output-card').empty().append(html);
 	}
 
 	function ambilAcakDariArray(array) {
@@ -89,6 +97,11 @@ $(document).ready(function() {
 			lokasi: 'Jl. Perkututu no 4',
 			harga: 5000,
 			tag: ['nasi', 'nasiGoreng', 'daging'],
+		}, {
+			nama: 'Steak ikan',
+			lokasi: 'Jl. Perkututu no 4',
+			harga: 5000,
+			tag: ['ikan', 'bakar'],
 		}
 	];
 });

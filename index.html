@@ -50,6 +50,17 @@
                         <strong>Diet keto</strong>. Menghindari keto yang jahat. 
                       </label>
                     </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input 
+                            class="form-check-input" 
+                            type="radio" 
+                            name="jenisDiet"
+                            id="dietNo"
+                            value="dietNo">
+                        <strong>Tidak diet</strong>. 
+                      </label>
+                    </div>
 
                     <h2>Makanan yang disukai</h2>
                     <div class="form-check">
@@ -107,29 +118,7 @@
 
             <div class="row d-none" id="output">
                 <div class="col">
-                    <div class="card" style="width: 20rem;">
-                        <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Pagi</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Beli</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 20rem;">
-                        <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Siang</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Beli</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 20rem;">
-                        <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">Malam</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Beli</a>
-                        </div>
+                    <div id="output-card">
                     </div>
                     <br>
                     <button
@@ -142,9 +131,24 @@
             </div>
         </main>
 
+        <script id="template-makanan" type="text/x-handlebars-template">
+            <div class="card" style="width: 20rem;">
+                <img 
+                    class="card-img-top" 
+                    src="http://via.placeholder.com/350x150" 
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">{{nama}}</h4>
+                    <p class="card-text">{{lokasi}}</p>
+                    <a href="#" class="btn btn-primary">Beli</a>
+                </div>
+            </div>
+        </script>
+
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" integrity="sha256-+JMHsXRyeTsws/tzbIh5YHQxRdKCuNjmvNcTFtY6DLc=" crossorigin="anonymous"></script>
         <script src="js/app.js"></script>
     </body>
 </html>
