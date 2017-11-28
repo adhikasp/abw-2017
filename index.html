@@ -8,18 +8,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/main.css">
         <!-- <link rel="stylesheet" href="css/main.css"> -->
     </head>
     <body>
+        <nav class="navbar">
+            <span class="navbar-brand mb-0 h1">DietApa</span>
+        </nav>
         <main class="container">
             <div class="row">
                 <div class="col">
                     <div class="jumbotron">
                         <h1 class="display-3">
-                            MakanApa.club
+                            DietApa
                         </h1>
                         <p class="lead">
                             Makan teratur, sehat, tapi tetap enak.
+                        </p>
+                            DietApa membantumu membuat program diet yang kamu
+                            pilih sendiri dengan memberikan jadwal diet selama
+                            seminggu dengan menu makanan kesukaanmu.
+                        <p>
                         </p>
                     </div>
                 </div>
@@ -30,44 +39,44 @@
                     <h2>Jenis Diet</h2>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="radio" 
+                        <input
+                            class="form-check-input"
+                            type="radio"
                             name="jenisDiet"
                             id="dietKarbohidrat"
                             value="dietKarbohidrat">
-                        <strong>Diet karbohidrat</strong>. Menghindari karbohidrat yang jahat. 
+                        <strong>Diet karbohidrat</strong>. Menghindari karbohidrat yang jahat.
                       </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="radio" 
+                        <input
+                            class="form-check-input"
+                            type="radio"
                             name="jenisDiet"
                             id="dietKeto"
                             value="dietKeto">
-                        <strong>Diet keto</strong>. Menghindari keto yang jahat. 
+                        <strong>Diet keto</strong>. Menghindari keto yang jahat.
                       </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="radio" 
+                        <input
+                            class="form-check-input"
+                            type="radio"
                             name="jenisDiet"
                             id="dietNo"
                             value="dietNo">
-                        <strong>Tidak diet</strong>. 
+                        <strong>Tidak diet</strong>.
                       </label>
                     </div>
 
                     <h2>Makanan yang disukai</h2>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
                             name="keinginanMakanan"
                             id="nasiGoreng"
                             value="nasiGoreng">
@@ -76,9 +85,9 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
                             name="keinginanMakanan"
                             id="ayamGoreng"
                             value="ayamGoreng">
@@ -87,9 +96,9 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
                             name="keinginanMakanan"
                             id="bakso"
                             value="bakso">
@@ -98,9 +107,9 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
                             name="keinginanMakanan"
                             id="mieAyam"
                             value="mieAyam">
@@ -108,7 +117,7 @@
                       </label>
                     </div>
                     <button
-                        type="button" 
+                        type="button"
                         class="btn btn-primary"
                         id="btn-racik">
                         Racik menu
@@ -122,7 +131,7 @@
                     </div>
                     <br>
                     <button
-                        type="button" 
+                        type="button"
                         class="btn btn-primary"
                         id="btn-ulangi">
                         Ulangi dari awal
@@ -133,13 +142,14 @@
 
         <script id="template-makanan" type="text/x-handlebars-template">
             <div class="card" style="width: 20rem;">
-                <img 
-                    class="card-img-top" 
-                    src="http://via.placeholder.com/350x150" 
+                <img
+                    class="card-img-top"
+                    src="http://via.placeholder.com/350x150"
                     alt="Card image cap">
                 <div class="card-body">
                     <h4 class="card-title">{{nama}}</h4>
                     <p class="card-text">{{lokasi}}</p>
+
                     <a href="#" class="btn btn-primary">Beli</a>
                 </div>
             </div>

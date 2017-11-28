@@ -1,0 +1,19 @@
+body {
+    background-color: #bc312b;
+    color: white;
+}
+
+.jumbotron {
+    background-color: #999798;
+}
+
+.navbar {
+    background-color: #999798;
+    margin-bottom: 50px;
+}
+
+#input h2 {
+    background-color: black;
+    padding: 1rem;
+    font-weight: bold;
+}
