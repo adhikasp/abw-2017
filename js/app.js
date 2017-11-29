@@ -57,32 +57,39 @@ $(document).ready(function() {
 		// Logika pemilihan makanan
 		////
 
+		let namaHari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+		let waktuMakan = ['pagi', 'siang', 'malam'];
+
 		// Makanan yang akan disarankan ke pengguna
 		let makananTerpilih = [];
 
 		// Pilih 3 makanan (pagi, siang, sore)
 		let slotMakanan = 3;
 
-		while (makananTerpilih.length < slotMakanan) {
-			let makanan = ambilAcakDariArray(databaseMakanan);
-			console.log(makanan);
+		// Iterasi 7 hari dalam seminggu
+		for(let i = 0; i < 7; i++) {
+			let makananHarian = []
+			while (makananHarian.length < slotMakanan) {
+				let makanan = ambilAcakDariArray(databaseMakanan);
 
-			// Makanan sudah ada, jangan duplikasi
-			if (makananTerpilih.indexOf(makanan) != -1) {
-				continue;
-			}
-
-			// Jangan pilih makanan yg bertentangan diet
-			if (tipeDiet === 'dietKarbohidrat') {
-				if (makanan.tag.indexOf('nasi') != -1) {
+				// Makanan sudah ada, jangan duplikasi
+				if (makananTerpilih.indexOf(makanan) != -1) {
 					continue;
 				}
-				if (makanan.tag.indexOf('kentang') != -1) {
-					continue;
-				}
-			}
 
-			makananTerpilih.push(makanan);
+				// Jangan pilih makanan yg bertentangan diet
+				if (tipeDiet === 'dietKarbohidrat') {
+					if (makanan.tag.indexOf('nasi') != -1) {
+						continue;
+					}
+					if (makanan.tag.indexOf('kentang') != -1) {
+						continue;
+					}
+				}
+				makanan.waktu = waktuMakan[makananHarian.length];
+				makananHarian.push(makanan);
+			}
+			makananTerpilih.push(makananHarian);
 		}
 
 
@@ -93,11 +100,13 @@ $(document).ready(function() {
 		// Compile template html
 		let sourceTemplate = $('#template-makanan').html();
 		let template = Handlebars.compile(sourceTemplate);
-		let html = makananTerpilih.map(function(makanan) {
-			return template(makanan);
-		});
-		// Pasang ke html
-		$('#output-card').empty().append(html);
+		namaHari.forEach(function(hari, index) {
+			let html = makananTerpilih[index].map(function(makanan) {
+				return template(makanan);
+			});
+			// Pasang ke html tiap harinya
+			$('#' + hari).empty().append(html);
+		})
 	}
 
 	function ambilAcakDariArray(array) {

@@ -17,3 +17,31 @@ body {
     padding: 1rem;
     font-weight: bold;
 }
+
+.food-row {
+    margin-bottom: 40px;
+}
+
+.food-row .waktu {
+    text-align: center;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+}
+
+.food-card {
+    background-color: #999798;
+    color: black;
+    width: 240px;
+}
+
+.food-card img.card-img-top {
+    max-width: 200px;
+    margin: 20px;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
