@@ -12,6 +12,34 @@ $(document).ready(function() {
 		$('#input').removeClass('d-none');
 	});
 
+	/*
+	Auto generate tag berdasarkan isi database makaanan.
+	*/
+	function initPilihanTag(databaseMakanan) {
+		let mount = $("#tag-makanan");
+
+		// Buat set pilihan makanan
+		let tagMakanan = databaseMakanan.reduce(function(tagList, makanan) {
+			makanan.tag.forEach(tag => {
+				tagList.add(tag);
+			});
+			return tagList;
+		}, new Set()); 
+		
+		// Compile template html
+		let sourceTemplate = $('#template-tag-makanan').html();
+		let template = Handlebars.compile(sourceTemplate);
+		let html = Array.from(tagMakanan).map(function(tag) {
+			tag = {
+				'tag': toTitleCase(tag),
+				'tagId': toCamelCase(tag),
+			}
+			return template(tag);
+		});
+		// Pasang ke html
+		mount.empty().append(html);
+	}
+
 	function racikMenu() {
 		////
 		// Logika input
@@ -74,6 +102,27 @@ $(document).ready(function() {
 
 	function ambilAcakDariArray(array) {
 		return array[Math.floor(Math.random()*array.length)]
+	}
+
+	/*
+	Mengubah sembarang string menjadi camelCase
+	Credit https://stackoverflow.com/a/2970667/4504053
+	*/
+	function toCamelCase(str) {
+		return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+			return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+		}).replace(/\s+/g, '');
+	}
+
+	/* 
+	Mengubah teks ke Title Case
+	Credit https://stackoverflow.com/a/4878800/4504053
+	*/
+	function toTitleCase(str)
+	{
+		return str.replace(/\w\S*/g, function(txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
 	}
 
 	let databaseMakanan = [
@@ -246,4 +295,5 @@ $(document).ready(function() {
 			tag: ['lontong', 'labu siam', 'tempe', 'pedas'],
 		},
 	];
+	initPilihanTag(databaseMakanan);	
 });

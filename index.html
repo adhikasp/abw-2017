@@ -72,50 +72,8 @@
                     </div>
 
                     <h2>Makanan yang disukai</h2>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="keinginanMakanan"
-                            id="nasiGoreng"
-                            value="nasiGoreng">
-                        Nasi goreng
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="keinginanMakanan"
-                            id="ayamGoreng"
-                            value="ayamGoreng">
-                        Ayam goreng
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="keinginanMakanan"
-                            id="bakso"
-                            value="bakso">
-                        Bakso
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="keinginanMakanan"
-                            id="mieAyam"
-                            value="mieAyam">
-                        Mie ayam
-                      </label>
-                    </div>
+                    <!-- Auto generated content -->
+                    <div id="tag-makanan"></div>
                     <button
                         type="button"
                         class="btn btn-primary"
@@ -152,6 +110,20 @@
 
                     <a href="#" class="btn btn-primary">Beli</a>
                 </div>
+            </div>
+        </script>
+
+        <script id="template-tag-makanan" type="text/x-handlebars-template">
+            <div class="form-check">
+                <label class="form-check-label">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="keinginanMakanan"
+                    id="{{tagId}}"
+                    value="{{tagId}}">
+                {{tag}}
+                </label>
             </div>
         </script>
 
