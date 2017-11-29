@@ -48,7 +48,7 @@ $(document).ready(function() {
 		// Ambil data jenis diet
 		let tipeDiet = $("input[name='jenisDiet']:checked").val();
 		// Ambil list makanan kesukaan
-		let daftarTipeMakanan = $("input[name='keinginanMakanan']:checked").map(function () {
+		let daftarMakananFavorit = $("input[name='keinginanMakanan']:checked").map(function () {
 		    return this.value;
 		}).get();
 
@@ -68,7 +68,8 @@ $(document).ready(function() {
 
 		// Iterasi 7 hari dalam seminggu
 		for(let i = 0; i < 7; i++) {
-			let makananHarian = []
+			let makananHarian = [];
+			let favorit = false;
 			while (makananHarian.length < slotMakanan) {
 				let makanan = ambilAcakDariArray(databaseMakanan);
 
@@ -86,6 +87,16 @@ $(document).ready(function() {
 						continue;
 					}
 				}
+
+				// Cek apakah hari ini sudah makan enak
+				if (contains(makanan.tag, daftarMakananFavorit)) {
+					favorit = true;
+				}
+				// Paling tidak 1 hari makan enak 1x, fallback di waktu malam.
+				if (!favorit && makananHarian.length === 2) {
+					continue;
+				}
+
 				makanan.waktu = waktuMakan[makananHarian.length];
 				makananHarian.push(makanan);
 			}
@@ -133,6 +144,12 @@ $(document).ready(function() {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 		});
 	}
+
+	function contains(haystack, arr) {
+		return arr.some(function (v) {
+			return haystack.indexOf(v) >= 0;
+		});
+	};
 
 	let databaseMakanan = [
 		// Diet Atkins
