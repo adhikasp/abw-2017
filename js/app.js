@@ -24,8 +24,8 @@ $(document).ready(function() {
 				tagList.add(tag);
 			});
 			return tagList;
-		}, new Set()); 
-		
+		}, new Set());
+
 		// Compile template html
 		let sourceTemplate = $('#template-tag-makanan').html();
 		let template = Handlebars.compile(sourceTemplate);
@@ -78,14 +78,8 @@ $(document).ready(function() {
 					continue;
 				}
 
-				// Jangan pilih makanan yg bertentangan diet
-				if (tipeDiet === 'dietKarbohidrat') {
-					if (makanan.tag.indexOf('nasi') != -1) {
-						continue;
-					}
-					if (makanan.tag.indexOf('kentang') != -1) {
-						continue;
-					}
+				if (makanan.diet !== tipeDiet) {
+					continue;
 				}
 
 				// Cek apakah hari ini sudah makan enak
@@ -134,7 +128,7 @@ $(document).ready(function() {
 		}).replace(/\s+/g, '');
 	}
 
-	/* 
+	/*
 	Mengubah teks ke Title Case
 	Credit https://stackoverflow.com/a/4878800/4504053
 	*/
@@ -159,42 +153,49 @@ $(document).ready(function() {
 			lokasi: 'Jl. Kaliurang Km. 5 Gang Pangkur No.5, Depok, Yogyakarta',
 			harga: 18000,
 			tag: ['ayam', 'goreng', 'timun', 'tomat', 'asin'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Dada Bebek',
 			warung: 'Bebek Sidolaris',
 			lokasi: 'Jl. Kaliurang Km. 5 Gang Pangkur No.5, Depok, Yogyakarta',
 			harga: 22000,
 			tag: ['bebek', 'kangkung', 'kubis', 'sambal', 'pedas'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Tom Yum Ayam',
 			warung: 'Rempah Asia',
 			lokasi: 'Jl. Kaliurang Km 5, Depok, Yogyakarta',
 			harga: 22000,
 			tag: ['ayam', 'jagung', 'bawang bombai', 'wortel', 'bawang putih', 'asam', 'pedas'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Ayam Geprek',
 			warung: 'Dapoer Ayam Geprek & Es Buah, Kaliurang',
 			lokasi: 'Jl. Kaliurang KM 5 (Halaman Bungong Jeumpa), Depok, Yogyakarta',
 			harga: 12000,
 			tag: ['ayam', 'timun', 'sambal', 'pedas'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Ikan Asin',
 			warung: 'Dapoer Ayam Geprek & Es Buah, Kaliurang',
 			lokasi: 'Jl. Kaliurang KM 5 (Halaman Bungong Jeumpa), Depok, Yogyakarta',
 			harga: 4500,
 			tag: ['ikan', 'asin'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Ayam Geprek + Oseng Teri',
 			warung: 'Dapoer Ayam Geprek & Es Buah, Kaliurang',
 			lokasi: 'Jl. Kaliurang KM 5 (Halaman Bungong Jeumpa), Depok, Yogyakarta',
 			harga: 15000,
 			tag: ['ayam', 'timun', 'sambal', 'ikan teri', 'pare', 'tomat', 'tauge', 'pedas'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Spicy Chicken Bites',
 			warung: 'McDonald\'s, Yogyakarta-Kaliurang',
 			lokasi: ' Jl. Kaliurang, Depok, Yogyakarta',
 			harga: 10000,
 			tag: ['ayam', 'telur', 'pedas'],
+			diet: 'dietAtkin',
 		}, {
 			nama: 'Ayam Serundeng Sambal Ijo',
 			warung: 'Ayam & Bebek SPG',
@@ -209,36 +210,42 @@ $(document).ready(function() {
 			lokasi: 'Jl. Pandega Marta, Depok, Yogyakarta',
 			harga: 4500,
 			tag: ['kacang hijau', 'ketan hitam', 'manis'],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Burjo Susu',
 			warung: 'Warmindo Maharasa, Pandega',
 			lokasi: 'Jl. Pandega Marta, Depok, Yogyakarta',
 			harga: 6000,
 			tag: ['kacang hijau', 'ketan hitam', 'susu', 'manis'],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Telor 1/2 Matang',
 			warung: 'Warmindo Maharasa, Pandega',
 			lokasi: 'Jl. Pandega Marta, Depok, Yogyakarta',
 			harga: 3000,
 			tag: ['telur', 'asin'],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Ketupat Sayur',
 			warung: 'Warmindo Maharasa, Pandega',
 			lokasi: 'Jl. Pandega Marta, Depok, Yogyakarta',
 			harga: 8000,
 			tag: ['tahu', 'labu siam', 'ketupat', 'telur', 'pedas'],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Apple Pie',
 			warung: 'McDonald\'s, Yogyakarta-Kaliurang',
 			lokasi: 'Jl. Kaliurang, Depok, Yogyakarta',
 			harga: 10000,
 			tag: [],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Hash Brown',
 			warung: 'McDonald\'s, Yogyakarta-Kaliurang',
 			lokasi: 'Jl. Kaliurang, Depok, Yogyakarta',
 			harga: 9500,
 			tag: ['kentang', 'telur', 'gurih'],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Egg and Cheese Muffin',
 			warung: 'McDonald\'s, Yogyakarta-Kaliurang',
@@ -251,12 +258,14 @@ $(document).ready(function() {
 			lokasi: 'Jl. Kaliurang, Depok, Yogyakarta',
 			harga: 10000,
 			tag: ['nasi', 'kentang', 'telur'],
+			diet: 'dietVegetarian',
 		}, {
 			nama: 'Nasi Pecel Biasa',
 			warung: 'Warung Lamparan Jember',
 			lokasi: 'Jl. Magelang Km 5,5, Mlati, Yogyakarta',
 			harga: 9000,
 			tag: ['nasi', 'tempe', 'timun', 'tomat', 'tauge', 'kerupuk', 'bayam'],
+			diet: 'dietVegetarian',
 		},
 		// Gluten-Free Diet
 		{
@@ -265,61 +274,71 @@ $(document).ready(function() {
 			lokasi: 'Jl. Lempong Sari No. 172, Ngaglik, Yogyakarta',
 			harga: 14000,
 			tag: ['ayam', 'serundeng', 'sambal', 'pedas'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Pepes Tuna + Nasi',
 			warung: 'Warung Makan Hercules',
 			lokasi: 'Jl. Selokan Mataram UGM Pogung Kidul, Depok, Yogyakarta',
 			harga: 14000,
 			tag: ['ikan tuna', 'tomat', 'daun kemangi', 'nasi'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Ayam Crispy Asam Manis + Nasi',
 			warung: 'SBC Spesial Cah Kangkung',
 			lokasi: 'Jl. Pandega Marta, No. 102A, Mlati, Yogyakarta',
 			harga: 15000,
 			tag: ['ayam', 'nasi', 'manis', 'asam'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Pas 19 Ikan Nila Bakar',
 			warung: 'SBC Spesial Cah Kangkung',
 			lokasi: 'Jl. Pandega Marta, No. 102A, Mlati, Yogyakarta',
 			harga: 23000,
 			tag: ['nasi', 'kangkung', 'ikan nila', 'sambal', 'pedas'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Pas 14 Ayam Bakar (Paha Atas)',
 			warung: 'SBC Spesial Cah Kangkung',
 			lokasi: 'Jl. Pandega Marta, No. 102A, Mlati, Yogyakarta',
 			harga: 16000,
 			tag: ['nasi', 'kangkung', 'ayam', 'pedas'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Gado Gado',
 			warung: 'Warung Lotek Bu Topo',
 			lokasi: 'Jl. Sawitsari, Depok, Yogyakarta',
 			harga: 15000,
 			tag: ['lontong', 'kentang', 'tomat', 'selada', 'timun', 'tahu', 'tempe', 'pedas'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Lotek',
 			warung: 'Warung Lotek Bu Topo',
 			lokasi: 'Jl. Sawitsari, Depok, Yogyakarta',
 			harga: 15000,
 			tag: ['kangkung', 'kol', 'tahu putih', 'timun', 'kacang panjang', 'touge', 'kerupuk'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Kupat Tahu',
 			warung: 'Warung Lotek Bu Topo',
 			lokasi: 'Jl. Sawitsari, Depok, Yogyakarta',
 			harga: 15000,
 			tag: ['lontong', 'tahu putih', 'touge', 'kol', 'seledri', 'kacang tanah'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Kubis Goreng',
 			warung: 'Pecel Bu Tien 24 Jam',
 			lokasi: 'Jl. Gejayan No. 26 A, Depok, Yogyakarta',
 			harga: 4000,
 			tag: ['kubis', 'asin'],
+			diet: 'dietGlutenFree',
 		}, {
 			nama: 'Lontong Lodeh',
 			warung: 'Pecel Bu Tien 24 Jam',
 			lokasi: 'Jl. Gejayan No. 26 A, Depok, Yogyakarta',
 			harga: 12000,
 			tag: ['lontong', 'labu siam', 'tempe', 'pedas'],
+			diet: 'dietGlutenFree',
 		},
 	];
-	initPilihanTag(databaseMakanan);	
+	initPilihanTag(databaseMakanan);
 });
